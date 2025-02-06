@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.visualiser</groupId>
+    <artifactId>graph-visualiser</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>GraphVisualiser</name>
+
+    <properties>
+        <!-- Z jakiej wersji JavaFX korzystać -->
+        <javafx.version>21</javafx.version>
+        <!-- Wersja kompilacji i uruchamiania w Javie 21 -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- Podstawowe moduły JavaFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <!-- Jeśli nie używasz FXML, to javafx-fxml można pominąć. -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Kompilacja w Javie 21 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Plugin do uruchamiania klasy z metodą main (lub rozszerzającą Application) -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <!-- Dopasuj do nazwy pakietu i klasy (patrz klasa niżej) -->
+                    <mainClass>org.visualiser.graphvisualiser.GraphVisualizer</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
